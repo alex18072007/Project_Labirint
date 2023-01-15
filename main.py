@@ -44,8 +44,11 @@ class Hero:
         self.x, self.y = position
 
     def render(self, screen):
-        center = self.x * TILE_SIZE + TILE_SIZE // 2, self.y * TILE_SIZE + TILE_SIZE // 2
-        pygame.draw.circle(screen, (255, 255, 255), center, TILE_SIZE // 2)
+        center = (self.x * TILE_SIZE + TILE_SIZE // 2) - 16, (self.y * TILE_SIZE + TILE_SIZE // 2) - 16
+        pers = pygame.image.load('creature (1).png')
+        PERS_SIZE = (32, 32)
+        pers = pygame.transform.scale(pers, PERS_SIZE)
+        screen.blit(pers, center)
 
 
 class Play:
@@ -66,6 +69,14 @@ class Play:
         if pygame.key.get_pressed()[pygame.K_UP]:
             n_y -= 1
         if pygame.key.get_pressed()[pygame.K_DOWN]:
+            n_y += 1
+        if pygame.key.get_pressed()[pygame.K_a]:
+            n_x -= 1
+        if pygame.key.get_pressed()[pygame.K_d]:
+            n_x += 1
+        if pygame.key.get_pressed()[pygame.K_w]:
+            n_y -= 1
+        if pygame.key.get_pressed()[pygame.K_s]:
             n_y += 1
         if self.labyrinth.svoboda((n_x, n_y)):
             self.hero.set_position((n_x, n_y))
@@ -90,7 +101,7 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode(WINDOW_SIZE)
 
-    labyrinth = Labyrinth('simle_map.txt', [0, 2, 3], 2)
+    labyrinth = Labyrinth('second_card', [0, 2, 3], 2)
     hero = Hero((7, 7))
     play = Play(labyrinth, hero)
 
