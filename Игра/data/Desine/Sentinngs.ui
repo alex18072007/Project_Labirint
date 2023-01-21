@@ -94,6 +94,19 @@
      <string>Титры</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="Nazad">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>367</y>
+      <width>311</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Назад</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
